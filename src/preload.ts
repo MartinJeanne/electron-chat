@@ -1,4 +1,4 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 
 declare global {
     interface Window {
@@ -6,6 +6,7 @@ declare global {
             node: () => string;
             chrome: () => string;
             electron: () => string;
+            send: (msg: string) => void;
         };
     }
 }
@@ -13,6 +14,6 @@ declare global {
 contextBridge.exposeInMainWorld('versions', {
     node: () => process.versions.node,
     chrome: () => process.versions.chrome,
-    electron: () => process.versions.electron
-    // we can also expose variables, not just functions
+    electron: () => process.versions.electron,
+    send: (msg: string) => ipcRenderer.invoke('send', msg)
 });

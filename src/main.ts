@@ -1,5 +1,6 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain, IpcMainInvokeEvent } from 'electron';
 import path from 'path';
+import WSClient from './service/WSClient';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -27,11 +28,18 @@ const createWindow = () => {
   //mainWindow.webContents.openDevTools();
 };
 
-app.on('ready', createWindow);
+const wsclient = new WSClient();
+wsclient.connect();
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+function handleSend(event: IpcMainInvokeEvent, msg: string) {
+  wsclient.send(msg);
+}
+
+app.whenReady().then(() => {
+  ipcMain.handle('send', handleSend);
+  createWindow();
+});
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();

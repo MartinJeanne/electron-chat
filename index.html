@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
 
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-    <p id="info"></p>
-    <script type="module" src="/src/renderer.ts"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World!</title>
+
+</head>
+
+<body>
+  <div id="title">
+    <h1>Chatroom</h1>
+  </div>
+
+  <div id="page">
+    <button id="connect">Connect</button>
+    <p id="debug"></p>
+    <div id="chat">
+      <div id="msg">
+        <p>User1: Salut ça va ?</p>
+        <p>User2: Oui et toi ?</p>
+        <p class="fromUser">Vous êtes tous là !</p>
+        <p>User3: Bah oui le S</p>
+      </div>
+      <input type="text" id="chatbox">
+    </div>
+  </div>
+  <script type="module" src="/src/renderer.ts"></script>
+</body>
+
 </html>
