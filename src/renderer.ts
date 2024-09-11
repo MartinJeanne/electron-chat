@@ -23,3 +23,10 @@ function appendNewMsg(msg: string, fromUser?: boolean) {
     if (fromUser) newMsg.classList.add('fromUser');
     msgList.appendChild(newMsg);
 }
+
+const namePlaceholder = document.getElementById("namePlaceholder");
+chatAPI.onNameSet((name) => {
+    console.log('renderer:' + name);
+    
+    namePlaceholder.innerText = name;
+});

@@ -4,7 +4,8 @@ declare global {
     interface Window {
         chatAPI: {
             send: (msg: string) => void;
-            onMsgReceived: (callback: (n: string) => void) => void;
+            onMsgReceived: (callback: (msg: string) => void) => void;
+            onNameSet: (callback: (name: string) => void) => void;
         };
     }
 }
@@ -14,5 +15,9 @@ contextBridge.exposeInMainWorld('chatAPI', {
 
     onMsgReceived: (callback: (msg: string) => void) => {
         ipcRenderer.on('msg-received', (_event, msg) => callback(msg))
+    },
+    
+    onNameSet: (callback: (name: string) => void) => {
+        ipcRenderer.on('name-set', (_event, name) => callback(name))
     }
 });
