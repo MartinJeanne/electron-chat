@@ -1,5 +1,14 @@
 import { contextBridge } from 'electron'
 
+declare global {
+    interface Window {
+        versions: {
+            node: () => string;
+            chrome: () => string;
+            electron: () => string;
+        };
+    }
+}
 
 contextBridge.exposeInMainWorld('versions', {
     node: () => process.versions.node,
