@@ -7,8 +7,6 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const wsclient = new WSClient();
-
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -26,20 +24,21 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
 
-  wsclient.connect(mainWindow);
-
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
+
+  return mainWindow;
 };
 
-
+const wsclient = new WSClient();
 function handleSend(event: IpcMainInvokeEvent, msg: string) {
   wsclient.send(msg);
 }
 
 app.whenReady().then(() => {
   ipcMain.handle('send', handleSend);
-  createWindow();
+  const window = createWindow();
+  wsclient.connect(window);
 });
 
 app.on('window-all-closed', () => {

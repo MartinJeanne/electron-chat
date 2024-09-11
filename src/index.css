@@ -42,14 +42,16 @@ body {
   flex-direction: column;
   justify-content: start;
   background-color: rgb(191, 191, 243);
+  overflow-y: scroll;
 }
 
 #msg>p {
   text-align: left;
   margin: 10px 50px 0 10px;
-  padding: 5px;
+  padding: 7px;
   border-radius: 8px;
   background-color: rgb(216, 220, 255);
+  word-wrap: break-word
 }
 
 #msg>p.fromUser {
