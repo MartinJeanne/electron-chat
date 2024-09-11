@@ -1,3 +1,4 @@
+import { BrowserWindow } from 'electron';
 import { WebSocket } from 'ws';
 
 export default class WSClient {
@@ -11,14 +12,14 @@ export default class WSClient {
         this.ws = ws;
     }
 
-    connect() {
+    connect(window: BrowserWindow) {
         this.ws.on('open', () => {
             console.log('Connected!');
         });
 
         this.ws.on('message', data => {
             console.log(data.toString());
-            // do something
+            window.webContents.send('msg-received', data.toString());
         });
     }
 

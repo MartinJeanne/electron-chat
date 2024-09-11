@@ -7,6 +7,8 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+const wsclient = new WSClient();
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -24,12 +26,12 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
 
+  wsclient.connect(mainWindow);
+
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
 };
 
-const wsclient = new WSClient();
-wsclient.connect();
 
 function handleSend(event: IpcMainInvokeEvent, msg: string) {
   wsclient.send(msg);
