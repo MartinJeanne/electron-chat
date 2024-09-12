@@ -3,17 +3,20 @@ import { WebSocket } from 'ws';
 
 export default class WSClient {
     private wsURL: string;
-    private ws: WebSocket;
+    private ws: WebSocket | null;
     private name: string;
 
     constructor(url?: string) {
         this.wsURL = url ? url : 'ws://localhost:8080';
+        this.ws = null;
+        this.name = '';
     }
 
     connect(window: BrowserWindow) {
-        const ws = new WebSocket(this.wsURL);
-        ws.on('error', console.error);
-        this.ws = ws;
+        if (this.ws) this.ws.terminate();
+        this.ws = new WebSocket(this.wsURL);
+        
+        this.ws.on('error', console.error);
 
         this.ws.on('open', () => {
             console.log('Connected!');
@@ -34,15 +37,16 @@ export default class WSClient {
     }
 
     disconnect() {
-        this.ws.terminate();
+        if (this.ws) this.ws.terminate();
+        this.ws = null;
         this.name = '';
     }
 
     send(msg: string) {
-        this.ws.send(msg);
+        if (this.ws) this.ws.send(msg);
     }
 
     stop() {
-        this.ws.terminate();
+        if (this.ws) this.ws.terminate();
     }
 }

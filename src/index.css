@@ -72,7 +72,7 @@ body {
   justify-content: space-between;
 }
 
-#msg {
+#msgList {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -81,7 +81,7 @@ body {
   overflow-y: scroll;
 }
 
-#msg>p {
+.msg {
   position: relative;
   text-align: left;
   margin: 10px 70px 0 15px;
@@ -91,12 +91,12 @@ body {
   word-wrap: break-word
 }
 
-#msg>p.fromUser {
+.msg.fromUser {
   text-align: right;
   margin: 10px 15px 0 70px;
 }
 
-#msg>p.fromOther:after {
+.msg.fromOther:after {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -111,7 +111,7 @@ body {
 	margin-left: -12px;
 }
 
-#msg>p.fromUser:after {
+.msg.fromUser:after {
 	content: '';
 	position: absolute;
 	right: 0;
