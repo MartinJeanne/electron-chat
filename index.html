@@ -13,9 +13,17 @@
   </div>
 
   <div id="page">
-    <button id="connect">Connect</button>
-    <div>Your name is: <div id="namePlaceholder">dd</div></div>
-    <p id="debug"></p>
+    <div id="info">
+      <div class="action bar">
+        <button class="btn connect">Connect</button>
+        <button class="btn disconnect" disabled>Disconnect</button>
+      </div>
+      <div class="status bar">
+        <p>status : <strong id="status">offline</strong></p>
+        <p>Your name is: <strong id="namePlaceholder"></strong></p>
+      </div>
+      <p id="debug"></p>
+    </div>
 
     <div id="chat">
       <div id="msg">

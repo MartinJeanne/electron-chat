@@ -26,7 +26,6 @@ const createWindow = () => {
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
-
   return mainWindow;
 };
 
@@ -36,9 +35,10 @@ function handleSend(event: IpcMainInvokeEvent, msg: string) {
 }
 
 app.whenReady().then(() => {
-  ipcMain.handle('send', handleSend);
   const window = createWindow();
-  wsclient.connect(window);
+  ipcMain.handle('connect-to-ws', () =>  wsclient.connect(window));
+  ipcMain.handle('disconnect-to-ws', () =>  wsclient.disconnect());
+  ipcMain.handle('send-msg', handleSend);
 });
 
 app.on('window-all-closed', () => {

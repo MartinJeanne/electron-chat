@@ -23,11 +23,34 @@ body {
   justify-content: space-between;
 }
 
-#connect {
+#info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn {
   width: 80px;
   height: 40px;
   border: 1px solid black;
   border-radius: 0.3em;
+}
+
+.connect {
+  background-color: rgb(177, 250, 177);
+}
+
+.disconnect {
+  background-color: rgb(250, 177, 240);
 }
 
 #chat {
