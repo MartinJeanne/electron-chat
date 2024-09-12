@@ -2,7 +2,7 @@ import './index.css';
 
 const chatAPI = window.chatAPI;
 
-//const debug = document.getElementById("debug");
+const debug = document.getElementById("debug");
 const statusTxt = document.querySelector("#status");
 const connectBtn = document.querySelector(".btn.connect") as HTMLButtonElement;
 connectBtn.addEventListener("click", () => {
@@ -25,21 +25,21 @@ disconnectBtn.addEventListener("click", () => {
 
 const chatbox = document.querySelector("#chatbox") as HTMLInputElement;
 chatbox.addEventListener('keydown', (e) => {
-    if (e.code !== 'Enter') return;
+    if (e.code !== 'Enter' && e.code !== 'NumpadEnter') return;
     if (chatbox.value) chatAPI.sendMsg(chatbox.value);
-    appendNewMsg(chatbox.value, true);
+    appendNewMsg(chatbox.value, 'User');
     chatbox.value = '';
 });
 
 chatAPI.onMsgReceived((msgReceived) => {
-    appendNewMsg(msgReceived);
+    appendNewMsg(msgReceived, 'Other');
 });
 
 const msgList = document.getElementById('msg');
-function appendNewMsg(msg: string, fromUser?: boolean) {
+function appendNewMsg(msg: string, fromClass: string) {
     const newMsg = document.createElement("p");
     newMsg.innerText = msg;
-    if (fromUser) newMsg.classList.add('fromUser');
+    newMsg.classList.add(`from${fromClass}`);
     msgList.appendChild(newMsg);
 }
 
