@@ -10,6 +10,7 @@ connectBtn.addEventListener("click", () => {
     statusTxt.textContent = 'connected';
     connectBtn.disabled = true;
     disconnectBtn.disabled = false;
+    chatbox.disabled = false;
 });
 
 const disconnectBtn = document.querySelector(".btn.disconnect") as HTMLButtonElement;
@@ -19,6 +20,7 @@ disconnectBtn.addEventListener("click", () => {
     namePlaceholder.innerText = '';
     connectBtn.disabled = false;
     disconnectBtn.disabled = true;
+    chatbox.disabled = true;
 });
 
 const chatbox = document.querySelector("#chatbox") as HTMLInputElement;

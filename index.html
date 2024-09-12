@@ -3,32 +3,25 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Hello World!</title>
+  <title>Chatroom</title>
 
 </head>
 
 <body>
-  <div id="title">
-    <h1>Chatroom</h1>
-  </div>
-
   <div id="page">
     <div id="info">
-      <div class="action bar">
-        <button class="btn connect">Connect</button>
-        <button class="btn disconnect" disabled>Disconnect</button>
-      </div>
-      <div class="status bar">
-        <p>status : <strong id="status">offline</strong></p>
-        <p>Your name is: <strong id="namePlaceholder"></strong></p>
-      </div>
+      <h1>Chatroom</h1>
+      <button class="btn connect">Connect</button>
+      <button class="btn disconnect" disabled>Disconnect</button>
+      <p id="statusParent">status: <strong id="status">offline</strong></p>
+      <p id="namePlaceholderParent">Your name is: <strong id="namePlaceholder"></strong></p>
       <p id="debug"></p>
     </div>
 
     <div id="chat">
       <div id="msg">
       </div>
-      <input type="text" id="chatbox">
+      <input type="text" id="chatbox" disabled>
     </div>
   </div>
   <script type="module" src="/src/renderer.ts"></script>

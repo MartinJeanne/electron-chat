@@ -25,20 +25,16 @@ const createWindow = () => {
   }
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   return mainWindow;
 };
 
 const wsclient = new WSClient();
-function handleSend(event: IpcMainInvokeEvent, msg: string) {
-  wsclient.send(msg);
-}
-
 app.whenReady().then(() => {
   const window = createWindow();
   ipcMain.handle('connect-to-ws', () =>  wsclient.connect(window));
   ipcMain.handle('disconnect-to-ws', () =>  wsclient.disconnect());
-  ipcMain.handle('send-msg', handleSend);
+  ipcMain.handle('send-msg', (e, msg) => wsclient.send(msg));
 });
 
 app.on('window-all-closed', () => {
