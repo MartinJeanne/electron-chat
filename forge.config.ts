@@ -3,7 +3,9 @@ import { MakerZIP } from '@electron-forge/maker-zip';
 import { VitePlugin } from '@electron-forge/plugin-vite';
 
 const config: ForgeConfig = {
-  packagerConfig: {},
+  packagerConfig: {
+    icon: 'C:\\Users\\JEANNE_Martin\\Documents\\dev-solo\\electron-chat\\images\\speech-bubble'
+  },
   makers: [new MakerZIP({})],
   plugins: [
     new VitePlugin({
