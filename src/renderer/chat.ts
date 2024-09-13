@@ -4,13 +4,15 @@ const chatbox = document.querySelector('#chatbox') as HTMLInputElement;
 const msgList = document.querySelector('#msgList');
 
 export default function setUpChat() {
-    window.addEventListener('keydown', (e) => {
+    window.addEventListener('keydown', () => {
         chatbox.focus();
     });
 
     chatbox.addEventListener('keydown', (e) => {
         if (e.code !== 'Enter' && e.code !== 'NumpadEnter') return;
-        if (chatbox.value) chatAPI.sendMsg(chatbox.value);
+        if (!chatbox.value || chatbox.value.trim() === '') return;
+
+        chatAPI.sendMsg(chatbox.value);
         appendNewMsg(chatbox.value, 'fromUser');
         chatbox.value = '';
         chatbox.focus();
