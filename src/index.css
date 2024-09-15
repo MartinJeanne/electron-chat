@@ -26,7 +26,7 @@ body {
 #info {
   width: 100%;
   height: 20vh;
-  background-color: rgb(204, 207, 231);
+  background-color: rgb(193, 180, 248);
   display: flex;
   justify-content: space-around;
   align-items: center;
