@@ -29,7 +29,13 @@ export default function setUpChat() {
         newMsg.innerText = msg;
         newMsg.classList.add('msg');
         newMsg.classList.add(from);
-        msgList.appendChild(newMsg);
+
+        const msgParent = document.createElement('div');
+        msgParent.classList.add('msgParent');
+        msgParent.appendChild(newMsg);
+        msgParent.classList.add(from);
+
+        msgList.appendChild(msgParent);
         msgList.scrollTop = msgList.scrollHeight;
     }
 }
