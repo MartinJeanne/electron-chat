@@ -1,3 +1,5 @@
+/* General settingss */
+
 html,
 body {
   margin: 0;
@@ -9,27 +11,45 @@ body {
     Arial, sans-serif;
 }
 
-#title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
 }
 
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(168, 160, 172);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(205, 184, 214);
+}
+
+/* APP */
 #page {
   width: 100%;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+/* INFO */
 #info {
   width: 100%;
   height: 20vh;
-  background-color: rgb(193, 180, 248);
+  background-color: rgb(124, 63, 153);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  box-sizing: border-box;
+  border-bottom: 2px solid white;
 }
 
 #namePlaceholderParent {
@@ -77,6 +97,7 @@ body {
   color: white;
 }
 
+/* CHAT */
 #chat {
   height: 80vh;
   display: flex;
@@ -89,7 +110,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  background-color: rgb(248, 248, 248);
+  background-color: rgb(46, 44, 46);
   overflow-y: scroll;
   padding-top: 10px;
 }
@@ -102,14 +123,14 @@ body {
 }
 
 .msg.fromOther {
-  background-color: rgb(231, 232, 243);
+  background-color: rgb(125, 98, 138);
 
   text-align: left;
   margin: 0px 70px 10px 15px;
 }
 
 .msg.fromUser {
-  background-color: rgb(216, 220, 255);
+  background-color: rgb(124, 63, 153);
   text-align: right;
   margin: 0px 15px 10px 70px;
 }
@@ -122,7 +143,7 @@ body {
   width: 0;
   height: 0;
   border: 13px solid transparent;
-  border-right-color: rgb(231, 232, 243);
+  border-right-color: rgb(125, 98, 138);
   border-left: 0;
   border-bottom: 0;
   margin-top: -2px;
@@ -137,7 +158,7 @@ body {
   width: 0;
   height: 0;
   border: 13px solid transparent;
-  border-left-color: rgb(216, 220, 255);
+  border-left-color: rgb(124, 63, 153);
   border-right: 0;
   border-bottom: 0;
   margin-top: -2px;
