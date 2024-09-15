@@ -48,7 +48,7 @@ body {
   border-bottom: 2px solid white;
 }
 
-#namePlaceholderParent {
+#namePlaceholder {
   text-align: center;
   width: 200px;
 }
@@ -66,13 +66,23 @@ body {
 }
 
 .btn {
-  width: 80px;
+  width: 100px;
   height: 40px;
   border: none;
   color: black;
   background-color: white;
   border-radius: 0.3em;
   transition-duration: 0.4s;
+}
+
+.connect:disabled {
+  color: white;
+  background-color: #04AA6D;
+}
+
+.disconnect:disabled {
+  color: white;
+  background-color: #f44336;
 }
 
 .connect {
