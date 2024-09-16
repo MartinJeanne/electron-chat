@@ -188,3 +188,7 @@ body {
 #chatbox {
   height: 30px;
 }
+
+#chatbox:focus {
+  outline: 4px ridge rgba(170, 50, 220, .6);
+}

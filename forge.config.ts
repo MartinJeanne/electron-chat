@@ -4,7 +4,7 @@ import { VitePlugin } from '@electron-forge/plugin-vite';
 
 const config: ForgeConfig = {
   packagerConfig: {
-    icon: 'C:\\Users\\JEANNE_Martin\\Documents\\dev-solo\\electron-chat\\images\\speech-bubble'
+    icon: './images/speech-bubble.png'
   },
   makers: [new MakerZIP({})],
   plugins: [

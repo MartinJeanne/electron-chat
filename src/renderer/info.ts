@@ -10,7 +10,7 @@ export default function setUpInfo() {
         if (!namePlaceholder) throw new Error('namePlaceholder not found');
 
         console.log('renderer trigered:' + name);
-        namePlaceholder.innerText = `Your name is: ${name}`;
+        namePlaceholder.innerHTML = `Your name is: <strong>${name}</strong>`;
     });
 
     connectBtn.addEventListener('click', () => {
