@@ -7,7 +7,7 @@ export default class WSClient {
     private name: string;
 
     constructor(url?: string) {
-        this.wsURL = url ? url : 'ws://linkstart.club:8080';
+        this.wsURL = url ? url : 'ws://linkstart.club:8082';
         this.ws = null;
         this.name = '';
     }
